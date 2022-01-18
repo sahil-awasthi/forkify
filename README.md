@@ -4,8 +4,9 @@
 
 ### Recipe application which can
 
--- 1 Search recipe
--- 2 Bookmark any recipe
--- 3 Upload custom recipe
+1. Search recipe
+2. Bookmark it
+3. Change ingredient required according to servings
+4. Upload custom made recipe
 
 ###### Using for portfolio purpose :link:[Sahil Awasthi](https://linktr.ee/sahilawasthi)
