@@ -100,6 +100,18 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
+const controlAddIngredient = function () {
+  try {
+    // Update Ingredient count
+    model.updateIngredientCount();
+
+    // Render new ingredient fields
+    addRecipeView.render(model.state.ingredientsCount);
+  } catch (error) {
+    addRecipeView.renderError(error.message);
+  }
+};
+
 const controlAddRecipe = async function (newRecipe) {
   try {
     // Show loading spinner
@@ -137,5 +149,6 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  addRecipeView.addHandlerAddIngredient(controlAddIngredient);
 };
 init();

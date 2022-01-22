@@ -12,6 +12,10 @@
   z-index: 1000;
   transition: all 0.5s;
 
+  max-height: 90vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+
   .btn--close-modal {
     font-family: inherit;
     color: inherit;
@@ -44,12 +48,12 @@
 
 .upload {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 4rem 6rem;
 
   &__column {
     display: grid;
-    grid-template-columns: 1fr 2.8fr;
+    grid-template-columns: 1fr 2.8fr 1fr 2.8fr;
     align-items: center;
     gap: 1.5rem;
 
@@ -90,6 +94,12 @@
     text-transform: uppercase;
     margin-bottom: 1rem;
     grid-column: 1/-1;
+  }
+
+  &__add__btn {
+    grid-column: 1 / -1;
+    justify-self: left;
+    padding: 1rem;
   }
 
   &__btn {

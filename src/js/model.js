@@ -12,6 +12,7 @@ export const state = {
     resultsPerPage: RES_PER_PAGE,
   },
   bookmarks: [],
+  ingredientsCount: 0,
 };
 
 const createRecipeObject = function (data) {
@@ -112,22 +113,47 @@ const clearBookmarks = function () {
   localStorage.clear('bookmarks');
 };
 
+export const updateIngredientCount = function () {
+  try {
+    state.ingredientsCount += 1;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const uploadRecipe = async function (newRecipe) {
   try {
-    const ingredients = Object.entries(newRecipe)
-      .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
-      .map(ing => {
-        const ingArr = ing[1].split(',').map(el => el.trim());
-        // const ingArr = ing[1].replaceAll(' ', '').split(',');
-        if (ingArr.length !== 3)
-          throw new Error(
-            'Wrong ingredient format! Please use the correct format :)'
-          );
+    const ingredients = [];
 
-        const [quantity, unit, description] = ingArr;
+    Object.entries(newRecipe).forEach(([key, value]) => {
+      const [keyName, type, keyNo] = key.split('-');
+      const ingredientIndex = keyNo - 1;
 
-        return { quantity: quantity ? +quantity : null, unit, description };
-      });
+      if (type !== 'ingredient') return;
+
+      if (!ingredients[ingredientIndex]) ingredients[ingredientIndex] = {};
+
+      ingredients[ingredientIndex][keyName] = value;
+
+      delete newRecipe[key];
+    });
+
+    console.log('data ☁️☁️', ingredients);
+
+    // const ingredients = Object.entries(newRecipe)
+    //   .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
+    //   .map(ing => {
+    //     const ingArr = ing[1].split(',').map(el => el.trim());
+    //     // const ingArr = ing[1].replaceAll(' ', '').split(',');
+    //     if (ingArr.length !== 3)
+    //       throw new Error(
+    //         'Wrong ingredient format! Please use the correct format :)'
+    //       );
+
+    //     const [quantity, unit, description] = ingArr;
+
+    //     return { quantity: quantity ? +quantity : null, unit, description };
+    //   });
 
     const recipe = {
       title: newRecipe.title,
