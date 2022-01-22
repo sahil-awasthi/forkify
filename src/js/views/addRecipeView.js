@@ -9,10 +9,20 @@ class AddRecipeView extends View {
   _btnOpen = document.querySelector('.nav__btn--add-recipe');
   _btnClose = document.querySelector('.btn--close-modal');
 
+  _btnAddIngredient = document.querySelector('.upload__add__btn');
+
   constructor() {
     super();
     this._addHandlerShowWindow();
     this._addHandlerHideWindow();
+  }
+
+  render(count, render = true) {
+    const markup = this._generateMarkup(count);
+
+    if (!render) return markup;
+
+    this._btnAddIngredient.insertAdjacentHTML('beforebegin', markup);
   }
 
   toggleWindow() {
@@ -29,16 +39,45 @@ class AddRecipeView extends View {
     this._overlay.addEventListener('click', this.toggleWindow.bind(this));
   }
 
+  addHandlerAddIngredient(handler) {
+    this._btnAddIngredient.addEventListener('click', function (e) {
+      e.preventDefault();
+      handler();
+    });
+  }
+
   addHandlerUpload(handler) {
     this._parentElement.addEventListener('submit', function (e) {
       e.preventDefault();
       const dataArr = [...new FormData(this)];
       const data = Object.fromEntries(dataArr);
+
+      console.log(data, '🚴🏻🚴🏻');
       handler(data);
     });
   }
 
-  _generateMarkup() {}
+  _generateMarkup(count) {
+    return `
+        <div class="upload__column">
+          <label name="ingredient-${count}">Ingredient ${count}</label>
+          <input
+            type="text"
+            name="quantity-ingredient-${count}"
+            placeholder="Quantity (eg: 2)"
+          />
+          <input
+            type="text"
+            name="unit-ingredient-${count}"
+            placeholder="Unit (eg: tablespoon)"
+          />
+          <input
+            type="text"
+            name="description-ingredient-${count}"
+            placeholder="Description (eg: himalayan salt)"
+          />
+        </div>`;
+  }
 }
 
 export default new AddRecipeView();

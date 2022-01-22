@@ -35,6 +35,9 @@
   padding: 0 3.5rem;
   margin-top: 4rem;
 
+  display: flex;
+  justify-content: center;
+
   .twitter-link:link,
   .twitter-link:visited {
     color: $color-grey-dark-2;

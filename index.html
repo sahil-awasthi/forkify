@@ -121,15 +121,24 @@
           </button> -->
         </div>
 
-        <p class="copyright">
+        <p class="copyright hidden">
           &copy; Copyright by
           <a
             class="twitter-link"
             target="_blank"
             href="https://twitter.com/jonasschmedtman"
             >Jonas Schmedtmann</a
-          >. Use for learning or your portfolio. Don't use to teach. Don't claim
-          as your own.
+          >. Using for learning and for portfolio. Not used to teach. Not my own
+          product &mdash; Sahil.
+        </p>
+
+        <p class="copyright">
+          <a
+            class="twitter-link"
+            target="_blank"
+            href="https://linktr.ee/sahilawasthi"
+            >About me</a
+          >😄
         </p>
       </div>
 
@@ -263,59 +272,69 @@
         <div class="upload__column">
           <h3 class="upload__heading">Recipe data</h3>
           <label>Title</label>
-          <input required name="title" type="text" />
+          <input
+            required
+            name="title"
+            type="text"
+            placeholder="Name of Recipe"
+          />
           <label>URL</label>
-          <input required name="sourceUrl" type="text" />
+          <input
+            name="sourceUrl"
+            type="text"
+            placeholder="URL where recipe is published"
+          />
           <label>Image URL</label>
-          <input required name="image" type="text" />
+          <input name="image" type="text" placeholder="URL of recipe image" />
           <label>Publisher</label>
-          <input required name="publisher" type="text" />
+          <input
+            required
+            name="publisher"
+            type="text"
+            placeholder="Name of publisher"
+          />
           <label>Prep time</label>
-          <input required name="cookingTime" type="number" />
+          <input
+            required
+            name="cookingTime"
+            type="number"
+            placeholder="Total prepration time in minutes"
+          />
           <label>Servings</label>
-          <input required name="servings" type="number" />
+          <input
+            required
+            name="servings"
+            type="number"
+            placeholder="Total servings"
+          />
         </div>
 
         <div class="upload__column">
           <h3 class="upload__heading">Ingredients</h3>
-          <label>Ingredient 1</label>
+          <!-- <label name="ingredient-1">Ingredient 1</label>
           <input
             type="text"
-            required
-            name="ingredient-1"
-            placeholder="Format: 'Quantity,Unit,Description'"
+            name="quantity-ingredient-1"
+            placeholder="Quantity (eg: 2)"
           />
-          <label>Ingredient 2</label>
           <input
             type="text"
-            name="ingredient-2"
-            placeholder="Format: 'Quantity,Unit,Description'"
+            name="unit-ingredient-1"
+            placeholder="Unit (eg: tablespoon)"
           />
-          <label>Ingredient 3</label>
           <input
             type="text"
-            name="ingredient-3"
-            placeholder="Format: 'Quantity,Unit,Description'"
-          />
-          <label>Ingredient 4</label>
-          <input
-            type="text"
-            name="ingredient-4"
-            placeholder="Format: 'Quantity,Unit,Description'"
-          />
-          <label>Ingredient 5</label>
-          <input
-            type="text"
-            name="ingredient-5"
-            placeholder="Format: 'Quantity,Unit,Description'"
-          />
-          <label>Ingredient 6</label>
-          <input
-            type="text"
-            name="ingredient-6"
-            placeholder="Format: 'Quantity,Unit,Description'"
-          />
+            name="description-ingredient-1"
+            placeholder="Description (eg: himalayan salt)"
+          /> -->
         </div>
+
+        <button class="nav__btn upload__add__btn">
+          <svg>
+            <use href="src/img/icons.svg#icon-plus-circle"></use>
+          </svg>
+          <span>Add ingredient</span>
+        </button>
 
         <button class="btn upload__btn">
           <svg>
