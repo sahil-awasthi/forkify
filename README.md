@@ -9,24 +9,6 @@
 3. Change ingredient required according to servings 👯👯
 4. Upload custom made recipe ⬆️
 
+<p align="center"><a href="https://github.com/sahil-awasthi"><img width="100%" src="./src/img/forkify-view.gif" alt="Game being played as gif"/></a></p>
+
 ###### Using for portfolio purpose :link:[Sahil Awasthi](https://linktr.ee/sahilawasthi)
-
-const ingredients = [];
-
-Object.entries(data).forEach(([key, value]) => {  
- const [keyName, type, keyNo] = key.split('-');
-const ingredientIndex = keyNo - 1;
-
-    if (type !== 'ingredient') return;
-
-    if (!ingredients[ingredientIndex]) ingredients[ingredientIndex] = {};
-
-    ingredients[ingredientIndex][keyName] = value;
-
-    delete data[key];
-
-})
-
-data.ingredients = ingredients;
-
-console.log('data', data);
